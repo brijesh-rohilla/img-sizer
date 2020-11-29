@@ -1,0 +1,21 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["airbnb-base"],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "ignorePatterns": ["/bin/"],
+
+  "rules": {
+    // Operator newline rule
+    "operator-linebreak": 0,
+
+    // only function use before define
+    "no-use-before-define": ["error", { "functions": false }]
+  }
+}

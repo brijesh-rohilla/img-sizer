@@ -1,0 +1,30 @@
+{
+  "name": "img-sizer",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "eslint . --fix",
+    "dev": "nodemon ./bin/www",
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "create-error": "^0.3.1",
+    "express": "^4.16.4",
+    "formidable": "^1.2.2",
+    "imagemin": "^7.0.1",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-pngquant": "^9.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "husky": "^4.3.0",
+    "nodemon": "^2.0.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  }
+}
