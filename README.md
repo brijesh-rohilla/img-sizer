@@ -1,11 +1,11 @@
 # img-sizer
 
-customized, easy to use that can help you to compress images, with your choice
+customized, easy to use that can help you to compress images, with your choice.
 
 ## Supported format
 
 - .jpg
-- .jaeg
+- .jpeg
 - .png
 
 ## How to use

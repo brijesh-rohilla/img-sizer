@@ -67,7 +67,7 @@ app.post('/fatch/img', (req, res) => {
         `cache/${element.name}`,
         (error) => {
           if (error) throw error;
-        }
+        },
       );
     });
 
