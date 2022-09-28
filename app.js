@@ -1,22 +1,25 @@
-/* eslint-disable no-console */
-const formidable = require('formidable');
 const createError = require('create-error');
+const formidable = require('formidable');
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
 
-const app = express();
-
 const imagemin = require('imagemin');
-const imageminPngquant = require('imagemin-pngquant');
 const imageminMozjpeg = require('imagemin-mozjpeg');
+const imageminPngquant = require('imagemin-pngquant');
 
+const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, './')));
 
 // Read configuration file
 const config = JSON.parse(fs.readFileSync('config.json', 'utf-8'));
+
+// Create /cache  folder if not exist
+if (!fs.existsSync('cache')) {
+  fs.mkdirSync('cache');
+}
 
 // Perform compression(Lossy)
 // Automatically from folder when start server
@@ -96,7 +99,6 @@ app.post('/fatch/img', (req, res) => {
 });
 
 function deleteCache() {
-  // eslint-disable-next-line consistent-return
   fs.readdir('cache', (err, files) => {
     if (err) return console.log(`Unable to scan directory: ${err}`);
 
@@ -109,12 +111,11 @@ function deleteCache() {
 }
 
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
+app.use((_req, _res, next) => {
   next(createError(404));
 });
 
 // error handler
-// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, _next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
